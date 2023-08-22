@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Machine</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg">
+  <h1>Quote Generator</h1>
+  <div id="wrapper" class="d-flex justify-content-center align-items-center">
+    
+    <div class="container-fluid justify-content-center" id="quote-box" >
+    <div id="text"></div>
+      <div id="author"></div>
+     
+      <div class="buttons">
+       <button onclick="newQuote()" class="btn btn-primary btn-lg" id="new-quote">New Quote</button>
+    <a href="#"  target=" _top" id="tweet-quote" class="bi bi-twitter" > <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+  <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+</svg>Tweet Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  let randomQuotes = [
+       "I learned that courage was not the absence of fear, but the triumph over it. The brave man is not he who does not feel afraid, but he who conquers that fear. - Nelson Mandela",
+        "If you believe it will work, you'll see opportunities. If you believe it won't, you will see obstacles. - Wayne Dyer",
+    "Believe you can and you're halfway there. - Theodore Roosevelt",
+        "Learn the rules like a pro, so you can break them like an artist. - Picasso",
+        "Do one thing every day that scares you. - Eleanor Roosevelt",
+        "I didn't get there by wishing for it or hoping for it, but by working for it. - Estee Lauder",
+        "If you can dream it, you can do it. - Walt Disney",
+    "Even if you are on the right track, you'll get run over if you just sit there. - Will Rogers",
+        "Success is not final, failure is not fatal: it is the courage to continue that counts. - Winston Churchill",
+        "Earn your leadership every day. - Michael Jordan",
+      ];
+    
+    window.onload = function(){
+      
+      displayQuotes(randomQuotes[0]);
+    }
+    
+    function displayQuotes(quote){
+      const [quoteText,quoteAuthor] = quote.split(" - ");
+      document.getElementById("text").innerHTML = quoteText;
+      document.getElementById("author").innerText = `-${quoteAuthor}`;
+      
+      let twitterLink = "https://twitter.com/intent/tweet?hashtags=quotes&;related=freecodecamp&amp;text=%22When%20everything%20seems%20to%20be%20going%20against%20you%2C%20remember%20that%20the%20airplane%20takes%20off%20against%20the%20wind%2C%20not%20with%20it.%22%20Henry%20Ford";
+      
+      document.getElementById("tweet-quote").href = twitterLink;
+      
+    }
+    
+    
+    function newQuote(){
+      let randomNumber = Math.floor(Math.random() * (randomQuotes.length));
+      const newQ = randomQuotes[randomNumber];
+      displayQuotes(newQ);
+    }
+  </script>
+  
+</body>
+</html>
